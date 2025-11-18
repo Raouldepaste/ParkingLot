@@ -12,7 +12,7 @@ public class Car {
 
     private String parkingSpot;
 
-    private String licensePlace;
+    private String licensePlate;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "owner_id", nullable = false)
@@ -34,12 +34,12 @@ public class Car {
         this.parkingSpot = parkingSpot;
     }
 
-    public String getLicensePlace() {
-        return licensePlace;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setLicensePlace(String licensePlace) {
-        this.licensePlace = licensePlace;
+    public void setLicensePlate(String licensePlace) {
+        this.licensePlate = licensePlace;
     }
 
     public Long getId() {
