@@ -42,7 +42,7 @@ public class UserBean {
             List<User> users = typedQuery.getResultList();
             return copyUsersToDto(users);
 
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new EJBException(e);
         }
 
@@ -66,5 +66,13 @@ public class UserBean {
         newUser.setPassword(passwordBean.convertToSha256(password));
         entityManager.persist(newUser);
         assignGroupsToUser(username, groups);
+    }
+
+    public Collection<String> findUsernamesByUserIds(Collection<Long> userIds) {
+        List<String> usernames = entityManager.createQuery("SELECT u.username FROM User u WHERE u.id IN :userIds", String.class)
+                .setParameter("userIds", userIds)
+                .getResultList();
+
+        return usernames;
     }
 }
